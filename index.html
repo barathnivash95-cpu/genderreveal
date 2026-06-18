@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gender Reveal Invitation</title>
+  <style>
+    :root {
+      --pink: #f8b8cf;
+      --blue: #a9d8ff;
+      --cream: #fff8f0;
+      --gold: #c79a45;
+      --text: #3f2d3d;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(248,184,207,0.55), transparent 32%),
+        radial-gradient(circle at top right, rgba(169,216,255,0.65), transparent 32%),
+        linear-gradient(180deg, #fffdf8 0%, var(--cream) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .welcome-card,
+    .invite-card {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(199,154,69,0.35);
+      border-radius: 32px;
+      box-shadow: 0 18px 50px rgba(70, 40, 80, 0.16);
+      padding: 34px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-card::before,
+    .invite-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(199,154,69,0.45);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
+    .small-title {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 8px 0 6px;
+      font-size: clamp(2.3rem, 9vw, 4.8rem);
+      line-height: 0.95;
+      font-weight: 500;
+    }
+
+    h2 {
+      margin: 8px 0 18px;
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      font-weight: 400;
+    }
+
+    .subtitle {
+      max-width: 560px;
+      margin: 0 auto 24px;
+      font-size: 1.08rem;
+      line-height: 1.55;
+    }
+
+    .pink {
+      color: #d96a9a;
+    }
+
+    .blue {
+      color: #4e98d2;
+    }
+
+    .button {
+      border: none;
+      border-radius: 999px;
+      padding: 15px 26px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text);
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      box-shadow: 0 10px 24px rgba(70, 40, 80, 0.18);
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .details {
+      display: grid;
+      gap: 12px;
+      margin: 24px auto;
+      max-width: 560px;
+    }
+
+    .detail-box {
+      background: rgba(255, 248, 240, 0.8);
+      border-radius: 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(199,154,69,0.22);
+    }
+
+
+    .map-link {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(199,154,69,0.7);
+    }
+
+    .map-link:hover {
+      color: #4e98d2;
+    }
+
+    .label {
+      display: block;
+      color: var(--gold);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      margin-bottom: 4px;
+      font-family: Arial, sans-serif;
+    }
+
+    .value {
+      font-size: 1.08rem;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+
+    .couple-image-wrap {
+      max-width: 430px;
+      margin: 22px auto 10px;
+      padding: 10px;
+      background: linear-gradient(135deg, rgba(248,184,207,0.55), rgba(169,216,255,0.55));
+      border-radius: 28px;
+      box-shadow: 0 12px 28px rgba(70, 40, 80, 0.14);
+    }
+
+    .couple-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      border: 1px solid rgba(199,154,69,0.35);
+    }
+
+    .reveal-question {
+      margin: 10px auto 22px;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: #5e455d;
+      max-width: 560px;
+    }
+
+    form {
+      text-align: left;
+      max-width: 560px;
+      margin: 28px auto 0;
+      background: rgba(255,255,255,0.76);
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(169,216,255,0.55);
+    }
+
+    form h3 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .field {
+      margin-bottom: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+      font-size: 0.95rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #d8c6d6;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      background: white;
+    }
+
+    textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+
+    .note {
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: #6b5b68;
+      text-align: center;
+      margin-top: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .music-control {
+      margin-top: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .music-control button {
+      background: transparent;
+      border: 1px solid rgba(199,154,69,0.6);
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .balloons {
+      font-size: 2.4rem;
+      margin: 14px 0;
+      letter-spacing: 8px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 520px) {
+      .welcome-card,
+      .invite-card {
+        padding: 28px 16px;
+        border-radius: 24px;
+      }
+
+  
+    .couple-image-wrap {
+      max-width: 430px;
+      margin: 22px auto 10px;
+      padding: 10px;
+      background: linear-gradient(135deg, rgba(248,184,207,0.55), rgba(169,216,255,0.55));
+      border-radius: 28px;
+      box-shadow: 0 12px 28px rgba(70, 40, 80, 0.14);
+    }
+
+    .couple-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      border: 1px solid rgba(199,154,69,0.35);
+    }
+
+    .reveal-question {
+      margin: 10px auto 22px;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: #5e455d;
+      max-width: 560px;
+    }
+
+    form {
+        padding: 18px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    MUSIC SETUP:
+    1. Put your music file inside the assets folder.
+    2. Rename it as music.mp3.
+    3. The music will start after the guest taps "Open Invitation".
+  -->
+  <audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <section id="welcome" class="screen">
+    <div class="welcome-card">
+      <div class="small-title">You are invited to our</div>
+      <h1><span class="pink">Gender</span><br><span class="blue">Reveal</span></h1>
+      <div class="balloons">🎀 🎈 🧸 🎈 💙</div>
+      <p class="subtitle">
+        A little surprise is on the way. Tap below to open our invitation with music.
+      </p>
+      <button class="button" onclick="openInvitation()">Tap to Open Invitation</button>
+      <p class="note">Music starts only after tapping, because most phones block automatic music.</p>
+    </div>
+  </section>
+
+  <section id="invite" class="screen hidden">
+    <div class="invite-card">
+      <div class="small-title">He or She?</div>
+      <h1><span class="pink">Come</span> &amp; <span class="blue">See!</span></h1>
+      <h2>Gender Reveal Celebration</h2>
+
+      <div class="couple-image-wrap">
+        <img class="couple-image" src="assets/couple-thinking-cartoon.png" alt="Soft cartoon portrait of the parents-to-be thinking about the baby gender">
+      </div>
+
+      <p class="reveal-question">
+        We are thinking... will it be a little prince or a little princess?
+      </p>
+
+      <p class="subtitle">
+        We are excited to invite you and your family as we reveal the beautiful surprise of our little one.
+        Join us for a joyful moment filled with love, blessings, food, music, and memories.
+      </p>
+
+      <div class="details">
+        <div class="detail-box">
+          <span class="label">Date</span>
+          <div class="value">Sunday, 12 July 2026</div>
+        </div>
+        <div class="detail-box">
+          <span class="label">Time</span>
+          <div class="value">11:00 AM – 2:00 PM</div>
+        </div>
+        <div class="detail-box">
+          <span class="label">Venue</span>
+          <div class="value">
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Boleyn%20Room%2C%20Springfield%20Parish%20Council%2C%20Chelmsford" target="_blank" rel="noopener noreferrer">
+              Boleyn Room<br>Springfield Parish Council<br>Chelmsford
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--
+        RSVP OPTION CURRENTLY USES EMAIL:
+        When the guest submits, their email app opens with the RSVP details.
+        Later we can connect this to Google Forms / Google Sheets / Formspree for automatic saving.
+      -->
+      <form id="rsvpForm" onsubmit="sendRSVP(event)">
+        <h3>RSVP</h3>
+
+        <div class="field">
+          <label for="familyName">Family / Guest Name</label>
+          <input id="familyName" name="familyName" type="text" placeholder="Example: Kumar family" required />
+        </div>
+
+        <div class="field">
+          <label for="attendance">Will you attend?</label>
+          <select id="attendance" name="attendance" required>
+            <option value="">Select one</option>
+            <option>Yes, we will attend</option>
+            <option>Sorry, we cannot attend</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="food">Food Preference</label>
+          <select id="food" name="food" required>
+            <option value="">Select one</option>
+            <option>Vegetarian</option>
+            <option>Non-Vegetarian</option>
+            <option>Both / Mixed family preference</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="count">Number of persons attending</label>
+          <input id="count" name="count" type="number" min="0" max="20" placeholder="Example: 4" required />
+        </div>
+
+        <div class="field">
+          <label for="children">Any children attending?</label>
+          <select id="children" name="children">
+            <option value="">Select one</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message for the parents-to-be</label>
+          <textarea id="message" name="message" placeholder="Optional"></textarea>
+        </div>
+
+        <button class="button" type="submit">Submit RSVP</button>
+        <p class="note">
+          Current template sends RSVP by email. Later we can connect this to Google Sheets for automatic tracking.
+        </p>
+      </form>
+
+      <div class="music-control">
+        <button onclick="toggleMusic()">Pause / Play Music</button>
+      </div>
+
+      <div class="footer">
+        With love,<br>
+        <strong>Barath &amp; Family</strong>
+      </div>
+    </div>
+  </section>
+  <script>
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicLabel = document.getElementById('musicLabel');
+    const invite = document.getElementById('invite');
+    const openInviteBtn = document.getElementById('openInviteBtn');
+
+    function openInvitation() {
+      const welcome = document.getElementById('welcome');
+
+      // Show the invitation first. Music is attempted afterwards.
+      welcome.classList.add('hidden');
+      invite.classList.remove('hidden');
+      invite.classList.add('opening');
+      musicBtn.classList.remove('hidden');
+
+      try {
+        music.volume = 0.45;
+        const playPromise = music.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => { musicLabel.textContent = 'Pause'; })
+            .catch(() => { musicLabel.textContent = 'Play'; });
+        }
+      } catch (error) {
+        musicLabel.textContent = 'Play';
+      }
+
+      setTimeout(() => invite.classList.remove('opening'), 1300);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (openInviteBtn) {
+      openInviteBtn.addEventListener('click', openInvitation);
+      openInviteBtn.addEventListener('touchend', function(event) {
+        event.preventDefault();
+        openInvitation();
+      });
+    }
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play()
+          .then(() => musicLabel.textContent = 'Pause')
+          .catch(() => musicLabel.textContent = 'Play');
+      } else {
+        music.pause();
+        musicLabel.textContent = 'Play';
+      }
+    }
+
+    function sendRSVP(event) {
+      event.preventDefault();
+
+      const familyName = document.getElementById('familyName').value;
+      const attendance = document.getElementById('attendance').value;
+      const food = document.getElementById('food').value;
+      const count = document.getElementById('count').value;
+      const children = document.getElementById('children').value;
+      const allergies = document.getElementById('allergies').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent('Gender Reveal RSVP - ' + familyName);
+      const body = encodeURIComponent(
+        'Gender Reveal RSVP
+
+' +
+        'Family / Guest Name: ' + familyName + '
+' +
+        'We eagerly await your presence: ' + attendance + '
+' +
+        'Preference: ' + food + '
+' +
+        'Number of persons attending: ' + count + '
+' +
+        'Children attending: ' + children + '
+' +
+        'Allergies: ' + allergies + '
+' +
+        'Message: ' + message + '
+
+' +
+        'Event: Gender Reveal Celebration
+' +
+        'Date: Sunday, 12 July 2026
+' +
+        'Time: 11:00 AM - 2:00 PM
+' +
+        'Venue: Boleyn Room, Springfield Parish Council, Chelmsford'
+      );
+
+      window.location.href = 'mailto:barathnivash95@gmail.com?subject=' + subject + '&body=' + body;
+    }
+  </script>
+</body>
+</html>
