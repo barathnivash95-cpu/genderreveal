@@ -1,15 +1,13 @@
 # Gender Reveal Invitation
 
-Updated version:
-- bright pink and bright blue thought clouds placed in the side spaces near the title
-- couple image centered and slightly more visible
-- dynamic RSVP flow
-- if guest selects not attending, only the message field appears
-- if guest selects attending, number of persons appears and then vegetarian/non vegetarian counts appear
-- any children attending has been removed
+Updated changes:
+- thinking clouds moved upward near the marked spaces
+- first page subtitle updated
+- heart replaced with a tie icon
+- removed the music sentence on the first page
+- background couple image stays sticky while content scrolls
+- music button moved to the upper-right area
+- dynamic RSVP logic preserved
 
-Upload these to your GitHub repo root:
-- index.html
-- README.md
-- .nojekyll
-- assets folder
+- added an allergies question for attending guests
+- footer changed to "With love, Brijitha & Barath"

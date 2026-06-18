@@ -19,7 +19,6 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -60,7 +59,8 @@
       z-index: 1;
     }
 
-    .welcome-card { padding: 36px 22px 52px; text-align: center; }
+    .welcome-card { padding: 36px 22px 46px; text-align: center; }
+    .invite-card { padding: 0; }
 
     .small-title {
       text-transform: uppercase;
@@ -85,22 +85,15 @@
     .blue { color: var(--blue-deep); }
 
     .subtitle, .fun-copy, .parking-note {
-      max-width: 620px;
+      max-width: 640px;
       margin: 0 auto;
       line-height: 1.62;
       position: relative;
       z-index: 2;
     }
 
-    .subtitle { font-size: 1.08rem; margin-bottom: 28px; }
-
-    .balloons {
-      font-size: 2.2rem;
-      letter-spacing: 8px;
-      margin: 10px 0 16px;
-      position: relative;
-      z-index: 2;
-    }
+    .subtitle { font-size: 1.05rem; margin-bottom: 26px; }
+    .balloons { font-size: 2.1rem; letter-spacing: 8px; margin: 10px 0 16px; position: relative; z-index: 2; }
 
     .babybum-link {
       width: 146px;
@@ -119,7 +112,6 @@
       z-index: 3;
       transition: transform .2s ease;
     }
-
     .babybum-link:hover, .babybum-link:active { transform: translateY(-2px) scale(1.03); }
 
     .babybum-shape {
@@ -131,7 +123,6 @@
       border: 4px solid rgba(197,154,81,.28);
       overflow: hidden;
     }
-
     .babybum-shape::before,
     .babybum-shape::after {
       content: "";
@@ -143,10 +134,8 @@
       border-radius: 50%;
       border: 2px solid rgba(197,154,81,.18);
     }
-
     .babybum-shape::before { left: 10px; }
     .babybum-shape::after { right: 10px; }
-
     .baby-waist {
       position: absolute;
       top: 10px;
@@ -158,7 +147,6 @@
       opacity: .95;
       border: 2px solid rgba(255,255,255,.7);
     }
-
     .tap-text {
       position: relative;
       z-index: 2;
@@ -168,94 +156,36 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    .tiny-note {
-      font-family: Arial, sans-serif;
-      font-size: .86rem;
-      color: #6d5e6e;
-      margin-top: 18px;
+    .invite-shell {
       position: relative;
-      z-index: 2;
+      padding: 34px 22px 38px;
+      min-height: 100vh;
     }
 
-    .invite-card { padding: 0; }
-    .invite-shell { position: relative; padding: 34px 22px 38px; min-height: 100vh; }
-
+    /* sticky/fixed-like background image */
     .invite-hero-bg {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
+      position: sticky;
+      top: 150px;
+      height: 0;
+      overflow: visible;
       z-index: 0;
       pointer-events: none;
     }
-
     .hero-image-wrap {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 160px;
+      position: relative;
       width: min(96%, 760px);
-      opacity: .43;
+      margin: 0 auto;
+      opacity: .42;
       filter: saturate(1.06);
+      transform: translateY(180px);
     }
-
     .hero-image-wrap img { width: 100%; display: block; }
 
-    .cloud {
-      position: absolute;
-      min-width: 106px;
-      max-width: 124px;
-      min-height: 66px;
-      padding: 16px 14px;
-      border-radius: 40px;
-      font-family: Arial, sans-serif;
-      font-weight: 800;
-      font-size: 1.08rem;
+    .content-layer {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      box-shadow: 0 12px 24px rgba(83,53,92,.14);
     }
-
-    .cloud::before,
-    .cloud::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    .cloud-pink {
-      background: #ff4da6;
-      left: 28px;
-      top: 440px;
-    }
-    .cloud-pink::before { width: 42px; height: 42px; background: #ff4da6; left: 8px; top: -12px; }
-    .cloud-pink::after { width: 34px; height: 34px; background: #ff4da6; right: 12px; top: -10px; }
-
-    .cloud-blue {
-      background: #3fa6ff;
-      right: 28px;
-      top: 440px;
-    }
-    .cloud-blue::before { width: 42px; height: 42px; background: #3fa6ff; left: 8px; top: -12px; }
-    .cloud-blue::after { width: 34px; height: 34px; background: #3fa6ff; right: 12px; top: -10px; }
-
-    .cloud-trail {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 1;
-    }
-
-    .cloud-pink .trail1 { width: 14px; height: 14px; background: #ff4da6; left: 22px; bottom: -18px; }
-    .cloud-pink .trail2 { width: 9px; height: 9px; background: #ff4da6; left: 14px; bottom: -28px; }
-
-    .cloud-blue .trail1 { width: 14px; height: 14px; background: #3fa6ff; right: 22px; bottom: -18px; }
-    .cloud-blue .trail2 { width: 9px; height: 9px; background: #3fa6ff; right: 14px; bottom: -28px; }
-
-    .content-layer { position: relative; z-index: 2; text-align: center; }
 
     .statement {
       max-width: 700px;
@@ -274,8 +204,57 @@
       font-size: clamp(2.2rem, 8vw, 4rem);
       line-height: .98;
     }
-
     .fun-copy { font-size: 1.08rem; margin: 0 auto 18px; }
+
+    /* thinking clouds near title */
+    .cloud {
+      position: absolute;
+      min-width: 106px;
+      max-width: 124px;
+      min-height: 66px;
+      padding: 16px 14px;
+      border-radius: 40px;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.08rem;
+      text-align: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      box-shadow: 0 12px 24px rgba(83,53,92,.14);
+    }
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    .cloud-pink {
+      background: #ff4da6;
+      left: 18px;
+      top: 352px;
+    }
+    .cloud-pink::before { width: 42px; height: 42px; background: #ff4da6; left: 8px; top: -12px; }
+    .cloud-pink::after { width: 34px; height: 34px; background: #ff4da6; right: 12px; top: -10px; }
+    .cloud-blue {
+      background: #3fa6ff;
+      right: 18px;
+      top: 352px;
+    }
+    .cloud-blue::before { width: 42px; height: 42px; background: #3fa6ff; left: 8px; top: -12px; }
+    .cloud-blue::after { width: 34px; height: 34px; background: #3fa6ff; right: 12px; top: -10px; }
+    .cloud-trail {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 1;
+    }
+    .cloud-pink .trail1 { width: 14px; height: 14px; background: #ff4da6; left: 22px; bottom: -18px; }
+    .cloud-pink .trail2 { width: 9px; height: 9px; background: #ff4da6; left: 14px; bottom: -28px; }
+    .cloud-blue .trail1 { width: 14px; height: 14px; background: #3fa6ff; right: 22px; bottom: -18px; }
+    .cloud-blue .trail2 { width: 9px; height: 9px; background: #3fa6ff; right: 14px; bottom: -28px; }
 
     .details {
       display: grid;
@@ -284,7 +263,6 @@
       max-width: 620px;
       text-align: left;
     }
-
     .detail-box {
       background: rgba(255,255,255,.82);
       border-radius: 18px;
@@ -292,7 +270,6 @@
       border: 1px solid rgba(197,154,81,0.22);
       box-shadow: 0 8px 16px rgba(83,53,92,.06);
     }
-
     .label {
       display: block;
       color: var(--gold);
@@ -303,7 +280,6 @@
       font-family: Arial, sans-serif;
       font-weight: 700;
     }
-
     .value { font-size: 1.06rem; line-height: 1.45; font-weight: 600; }
     .map-link { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(197,154,81,.7); }
 
@@ -328,7 +304,6 @@
       box-shadow: 0 10px 22px rgba(83,53,92,.08);
       font-family: Arial, sans-serif;
     }
-
     form h3 {
       text-align: center;
       margin: 0 0 16px;
@@ -336,7 +311,6 @@
       font-size: 1.55rem;
       font-weight: 500;
     }
-
     .field { margin-bottom: 15px; }
     .field label {
       display: block;
@@ -345,7 +319,6 @@
       font-size: .95rem;
       color: #513f55;
     }
-
     input, select, textarea {
       width: 100%;
       padding: 12px 13px;
@@ -356,10 +329,8 @@
       background: white;
       color: #4a3e4a;
     }
-
     textarea { min-height: 90px; resize: vertical; }
     .submit-row { text-align: center; margin-top: 6px; }
-
     .button {
       border: none;
       border-radius: 999px;
@@ -373,25 +344,22 @@
       transition: transform .2s ease;
       font-family: Arial, sans-serif;
     }
-
     .button:hover { transform: translateY(-2px); }
 
-    .helper-text,
-    .error-text {
+    .helper-text, .error-text {
       font-family: Arial, sans-serif;
       font-size: .88rem;
       margin-top: 8px;
     }
-
     .helper-text { color: #6b5b68; }
     .error-text { color: #c0396b; font-weight: 700; }
-
     .hidden { display: none !important; }
 
     .floating-music {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
+      top: 120px;
+      right: 14px;
+      bottom: auto;
       z-index: 50;
       width: 62px;
       height: 62px;
@@ -409,35 +377,35 @@
       font-family: Arial, sans-serif;
       line-height: 1.1;
     }
-
     .floating-music small { font-size: .66rem; font-weight: 700; }
     .footer { margin-top: 24px; font-size: 1.1rem; line-height: 1.5; text-align: center; }
 
     @media (max-width: 768px) {
       .invite-shell { padding: 30px 16px 34px; }
-      .hero-image-wrap { width: min(114%, 760px); top: 188px; opacity: .40; }
-      .cloud-pink { left: 18px; top: 428px; }
-      .cloud-blue { right: 18px; top: 428px; }
+      .hero-image-wrap { width: min(112%, 760px); transform: translateY(198px); opacity: .40; }
+      .cloud-pink { left: 12px; top: 330px; }
+      .cloud-blue { right: 12px; top: 330px; }
+      .floating-music { top: 110px; right: 12px; }
       .statement, .subtitle, .fun-copy { font-size: 1rem; }
     }
 
     @media (max-width: 520px) {
       .screen { padding: 14px; }
-      .welcome-card { padding: 28px 16px 40px; }
+      .welcome-card { padding: 28px 16px 38px; }
       .invite-shell { padding: 26px 14px 30px; }
       .welcome-card, .invite-card { border-radius: 24px; }
-      .hero-image-wrap { width: 142%; top: 250px; opacity: .37; }
+      .hero-image-wrap { width: 142%; transform: translateY(235px); opacity: .38; }
       .cloud {
-        min-width: 88px;
-        max-width: 94px;
+        min-width: 92px;
+        max-width: 96px;
         min-height: 56px;
-        padding: 13px 10px;
+        padding: 12px 10px;
         font-size: .92rem;
       }
-      .cloud-pink { left: 8px; top: 442px; }
-      .cloud-blue { right: 8px; top: 442px; }
+      .cloud-pink { left: 8px; top: 316px; }
+      .cloud-blue { right: 8px; top: 316px; }
+      .floating-music { width: 58px; height: 58px; top: 116px; right: 10px; }
       form { padding: 18px 14px; }
-      .floating-music { width: 58px; height: 58px; right: 12px; bottom: 12px; }
       .babybum-link { width: 136px; height: 118px; }
     }
   </style>
@@ -456,16 +424,14 @@
     <div class="welcome-card">
       <div class="small-title">You are invited to our</div>
       <h1><span class="pink">Gender</span><br><span class="blue">Reveal</span></h1>
-      <div class="balloons">🎀 🎈 🧸 🎈 💙</div>
-      <p class="subtitle">Our little surprise is on the way.. click below please please</p>
+      <div class="balloons">🎀 🎈 🧸 🎈 👔</div>
+      <p class="subtitle">Our little surprise is on the way. Tap the little baby bum to scroll down... instead of just scrolling 😅</p>
 
       <a class="babybum-link" href="#invite" onclick="startMusic()">
         <span class="babybum-shape"></span>
         <span class="baby-waist"></span>
         <span class="tap-text">Tap to Open</span>
       </a>
-
-      <p class="tiny-note">Tap the little baby bum to open the invitation. Music can be played or paused using the floating button.</p>
     </div>
   </section>
 
@@ -546,7 +512,6 @@
                 <label for="vegCount">How many prefer vegetarian?</label>
                 <input id="vegCount" name="vegCount" type="number" min="0" max="20" oninput="updatePreferenceHelper()" />
               </div>
-
               <div class="field">
                 <label for="nonVegCount">How many prefer non vegetarian?</label>
                 <input id="nonVegCount" name="nonVegCount" type="number" min="0" max="20" oninput="updatePreferenceHelper()" />
@@ -554,6 +519,11 @@
                 <div class="error-text hidden" id="preferenceError">The vegetarian and non vegetarian totals must match the number of persons attending.</div>
               </div>
             </div>
+          </div>
+
+          <div id="allergyField" class="field hidden">
+            <label for="allergies">Any allergies please let us know</label>
+            <textarea id="allergies" name="allergies" placeholder="Optional"></textarea>
           </div>
 
           <div id="messageField" class="field hidden">
@@ -568,7 +538,7 @@
 
         <div class="footer">
           With love,<br>
-          <strong>Barath &amp; Family</strong>
+          <strong>Brijitha &amp; Barath</strong>
         </div>
       </div>
     </div>
@@ -581,9 +551,7 @@
     function startMusic() {
       try {
         music.volume = 0.45;
-        music.play()
-          .then(() => musicLabel.textContent = "Pause")
-          .catch(() => musicLabel.textContent = "Play");
+        music.play().then(() => musicLabel.textContent = "Pause").catch(() => musicLabel.textContent = "Play");
       } catch (e) {
         musicLabel.textContent = "Play";
       }
@@ -603,13 +571,16 @@
       const attendingFields = document.getElementById("attendingFields");
       const foodFields = document.getElementById("foodFields");
       const messageField = document.getElementById("messageField");
+      const allergyField = document.getElementById("allergyField");
       const count = document.getElementById("count");
       const vegCount = document.getElementById("vegCount");
       const nonVegCount = document.getElementById("nonVegCount");
 
       if (attendance === "attending") {
         attendingFields.classList.remove("hidden");
-        messageField.classList.remove("hidden");
+        foodFields.classList.add("hidden");
+        messageField.classList.add("hidden");
+        allergyField.classList.remove("hidden");
         count.required = true;
         vegCount.required = false;
         nonVegCount.required = false;
@@ -617,6 +588,7 @@
         attendingFields.classList.add("hidden");
         foodFields.classList.add("hidden");
         messageField.classList.remove("hidden");
+        allergyField.classList.add("hidden");
         count.required = false;
         vegCount.required = false;
         nonVegCount.required = false;
@@ -628,6 +600,7 @@
         attendingFields.classList.add("hidden");
         foodFields.classList.add("hidden");
         messageField.classList.add("hidden");
+        allergyField.classList.add("hidden");
       }
     }
 
@@ -685,10 +658,10 @@
 
     function sendRSVP(event) {
       event.preventDefault();
-
       const familyName = document.getElementById("familyName").value;
       const attendance = document.getElementById("attendance").value;
       const message = document.getElementById("message").value;
+      const allergies = document.getElementById("allergies").value;
       let body = "Gender Reveal RSVP\n\n";
       body += "Family / Guest Name: " + familyName + "\n";
       body += "We eagerly await your presence: " + (attendance === 'attending' ? 'Attending' : 'Not attending') + "\n";
@@ -697,24 +670,25 @@
         const count = parseInt(document.getElementById("count").value || "0", 10);
         const veg = parseInt(document.getElementById("vegCount").value || "0", 10);
         const nonVeg = parseInt(document.getElementById("nonVegCount").value || "0", 10);
-
         if (!count) {
           alert("Please enter the number of persons attending.");
           return;
         }
-
         if (veg + nonVeg !== count) {
           document.getElementById("preferenceError").classList.remove("hidden");
           return;
         }
-
         body += "Number of persons attending: " + count + "\n";
         body += "Vegetarian: " + veg + "\n";
         body += "Non vegetarian: " + nonVeg + "\n";
+        body += "Any allergies: " + allergies + "\n";
       }
 
-      body += "Message: " + message + "\n\n";
-      body += "Event: Gender Reveal Celebration\n";
+      if (attendance === "not_attending") {
+        body += "Message: " + message + "\n";
+      }
+
+      body += "\nEvent: Gender Reveal Celebration\n";
       body += "Date: Sunday, 12 July 2026\n";
       body += "Time: 11:00 AM - 2:00 PM\n";
       body += "Venue: Boleyn Room, Springfield Parish Council, Chelmsford";
