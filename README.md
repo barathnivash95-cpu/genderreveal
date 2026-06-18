@@ -1,13 +1,14 @@
 # Gender Reveal Invitation
 
-Updated changes:
-- thinking clouds moved upward near the marked spaces
-- first page subtitle updated
-- heart replaced with a tie icon
-- removed the music sentence on the first page
-- background couple image stays sticky while content scrolls
-- music button moved to the upper-right area
-- dynamic RSVP logic preserved
+Final adjusted version:
+- allergies field shows only when attending is selected
+- background image is centered and stays still while content scrolls
+- thinking clouds are moved into the blank spaces beside the title
+- spelling corrected to "kutti" and "kuttan"
+- footer remains "Brijitha & Barath"
 
-- added an allergies question for attending guests
-- footer changed to "With love, Brijitha & Barath"
+Upload these to your GitHub repo root:
+- index.html
+- README.md
+- .nojekyll
+- assets folder

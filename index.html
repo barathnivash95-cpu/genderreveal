@@ -158,28 +158,35 @@
 
     .invite-shell {
       position: relative;
-      padding: 34px 22px 38px;
       min-height: 100vh;
+      padding: 34px 22px 38px;
+      isolation: isolate;
     }
 
-    /* sticky/fixed-like background image */
+    /* centered still background image */
     .invite-hero-bg {
-      position: sticky;
-      top: 150px;
-      height: 0;
-      overflow: visible;
-      z-index: 0;
+      position: absolute;
+      inset: 0;
       pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
     .hero-image-wrap {
-      position: relative;
-      width: min(96%, 760px);
+      position: sticky;
+      top: 165px;
+      width: min(90%, 700px);
       margin: 0 auto;
-      opacity: .42;
+      opacity: .40;
       filter: saturate(1.06);
-      transform: translateY(180px);
+      display: flex;
+      justify-content: center;
     }
-    .hero-image-wrap img { width: 100%; display: block; }
+    .hero-image-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center top;
+    }
 
     .content-layer {
       position: relative;
@@ -198,7 +205,16 @@
       line-height: 1.65;
     }
 
-    .title-stack { margin: 0 auto 8px; max-width: 660px; }
+    .headline-row {
+      max-width: 760px;
+      margin: 0 auto 8px;
+      display: grid;
+      grid-template-columns: 110px minmax(0,1fr) 110px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .title-stack { margin: 0; }
     .title-stack .same-size {
       display: block;
       font-size: clamp(2.2rem, 8vw, 4rem);
@@ -206,24 +222,24 @@
     }
     .fun-copy { font-size: 1.08rem; margin: 0 auto 18px; }
 
-    /* thinking clouds near title */
+    /* thinking clouds placed in clear blank spaces */
     .cloud {
-      position: absolute;
-      min-width: 106px;
-      max-width: 124px;
-      min-height: 66px;
-      padding: 16px 14px;
-      border-radius: 40px;
+      min-width: 96px;
+      min-height: 58px;
+      padding: 12px 10px;
+      border-radius: 36px;
       font-family: Arial, sans-serif;
       font-weight: 800;
-      font-size: 1.08rem;
+      font-size: 1rem;
       text-align: center;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 4;
+      position: relative;
       box-shadow: 0 12px 24px rgba(83,53,92,.14);
+      z-index: 3;
+      justify-self: center;
     }
     .cloud::before,
     .cloud::after {
@@ -232,29 +248,21 @@
       border-radius: 50%;
       z-index: -1;
     }
-    .cloud-pink {
-      background: #ff4da6;
-      left: 18px;
-      top: 352px;
-    }
-    .cloud-pink::before { width: 42px; height: 42px; background: #ff4da6; left: 8px; top: -12px; }
-    .cloud-pink::after { width: 34px; height: 34px; background: #ff4da6; right: 12px; top: -10px; }
-    .cloud-blue {
-      background: #3fa6ff;
-      right: 18px;
-      top: 352px;
-    }
-    .cloud-blue::before { width: 42px; height: 42px; background: #3fa6ff; left: 8px; top: -12px; }
-    .cloud-blue::after { width: 34px; height: 34px; background: #3fa6ff; right: 12px; top: -10px; }
+    .cloud-pink { background: #ff4da6; }
+    .cloud-pink::before { width: 34px; height: 34px; background: #ff4da6; left: 6px; top: -10px; }
+    .cloud-pink::after { width: 28px; height: 28px; background: #ff4da6; right: 10px; top: -8px; }
+    .cloud-blue { background: #3fa6ff; }
+    .cloud-blue::before { width: 34px; height: 34px; background: #3fa6ff; left: 6px; top: -10px; }
+    .cloud-blue::after { width: 28px; height: 28px; background: #3fa6ff; right: 10px; top: -8px; }
     .cloud-trail {
       position: absolute;
       border-radius: 50%;
       opacity: 1;
     }
-    .cloud-pink .trail1 { width: 14px; height: 14px; background: #ff4da6; left: 22px; bottom: -18px; }
-    .cloud-pink .trail2 { width: 9px; height: 9px; background: #ff4da6; left: 14px; bottom: -28px; }
-    .cloud-blue .trail1 { width: 14px; height: 14px; background: #3fa6ff; right: 22px; bottom: -18px; }
-    .cloud-blue .trail2 { width: 9px; height: 9px; background: #3fa6ff; right: 14px; bottom: -28px; }
+    .cloud-pink .trail1 { width: 12px; height: 12px; background: #ff4da6; left: 16px; bottom: -18px; }
+    .cloud-pink .trail2 { width: 8px; height: 8px; background: #ff4da6; left: 8px; bottom: -28px; }
+    .cloud-blue .trail1 { width: 12px; height: 12px; background: #3fa6ff; right: 16px; bottom: -18px; }
+    .cloud-blue .trail2 { width: 8px; height: 8px; background: #3fa6ff; right: 8px; bottom: -28px; }
 
     .details {
       display: grid;
@@ -359,7 +367,6 @@
       position: fixed;
       top: 120px;
       right: 14px;
-      bottom: auto;
       z-index: 50;
       width: 62px;
       height: 62px;
@@ -382,9 +389,8 @@
 
     @media (max-width: 768px) {
       .invite-shell { padding: 30px 16px 34px; }
-      .hero-image-wrap { width: min(112%, 760px); transform: translateY(198px); opacity: .40; }
-      .cloud-pink { left: 12px; top: 330px; }
-      .cloud-blue { right: 12px; top: 330px; }
+      .hero-image-wrap { width: min(96%, 680px); top: 150px; opacity: .40; }
+      .headline-row { grid-template-columns: 90px minmax(0,1fr) 90px; gap: 8px; }
       .floating-music { top: 110px; right: 12px; }
       .statement, .subtitle, .fun-copy { font-size: 1rem; }
     }
@@ -394,16 +400,14 @@
       .welcome-card { padding: 28px 16px 38px; }
       .invite-shell { padding: 26px 14px 30px; }
       .welcome-card, .invite-card { border-radius: 24px; }
-      .hero-image-wrap { width: 142%; transform: translateY(235px); opacity: .38; }
+      .hero-image-wrap { width: min(100%, 520px); top: 205px; opacity: .40; }
+      .headline-row { grid-template-columns: 82px minmax(0,1fr) 82px; gap: 6px; margin-bottom: 10px; }
       .cloud {
-        min-width: 92px;
-        max-width: 96px;
-        min-height: 56px;
-        padding: 12px 10px;
-        font-size: .92rem;
+        min-width: 78px;
+        min-height: 48px;
+        padding: 10px 8px;
+        font-size: .8rem;
       }
-      .cloud-pink { left: 8px; top: 316px; }
-      .cloud-blue { right: 8px; top: 316px; }
       .floating-music { width: 58px; height: 58px; top: 116px; right: 10px; }
       form { padding: 18px 14px; }
       .babybum-link { width: 136px; height: 118px; }
@@ -426,7 +430,6 @@
       <h1><span class="pink">Gender</span><br><span class="blue">Reveal</span></h1>
       <div class="balloons">🎀 🎈 🧸 🎈 👔</div>
       <p class="subtitle">Our little surprise is on the way. Tap the little baby bum to scroll down... instead of just scrolling 😅</p>
-
       <a class="babybum-link" href="#invite" onclick="startMusic()">
         <span class="babybum-shape"></span>
         <span class="baby-waist"></span>
@@ -443,20 +446,21 @@
         </div>
       </div>
 
-      <div class="cloud cloud-pink">kuttu<div class="cloud-trail trail1"></div><div class="cloud-trail trail2"></div></div>
-      <div class="cloud cloud-blue">kuttan<div class="cloud-trail trail1"></div><div class="cloud-trail trail2"></div></div>
-
       <div class="content-layer">
         <div class="statement">
           Plot twist loading... after all the family guessing, random predictions, and professional auntie-level analysis, it is finally time to find out who has been secretly keeping us curious! Join us for laughs, games, food, and one tiny suspense-filled reveal. Come ready to enjoy, because yes... we are making everyone play games too.
         </div>
 
         <div class="small-title">Gender Reveal Celebration</div>
-        <div class="title-stack">
-          <h1>
-            <span class="same-size"><span class="pink">He or She?</span></span>
-            <span class="same-size"><span class="blue">Come &amp; See!</span></span>
-          </h1>
+        <div class="headline-row">
+          <div class="cloud cloud-pink">kutti<div class="cloud-trail trail1"></div><div class="cloud-trail trail2"></div></div>
+          <div class="title-stack">
+            <h1>
+              <span class="same-size"><span class="pink">He or She?</span></span>
+              <span class="same-size"><span class="blue">Come &amp; See!</span></span>
+            </h1>
+          </div>
+          <div class="cloud cloud-blue">kuttan<div class="cloud-trail trail1"></div><div class="cloud-trail trail2"></div></div>
         </div>
 
         <p class="fun-copy">One little baby, two million guesses, and zero calm in this house.</p>
@@ -595,6 +599,7 @@
         count.value = "";
         vegCount.value = "";
         nonVegCount.value = "";
+        document.getElementById("allergies").value = "";
         clearPreferenceMessages();
       } else {
         attendingFields.classList.add("hidden");
