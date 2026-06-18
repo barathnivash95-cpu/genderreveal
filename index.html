@@ -60,10 +60,7 @@
       z-index: 1;
     }
 
-    .welcome-card {
-      padding: 36px 22px 46px;
-      text-align: center;
-    }
+    .welcome-card { padding: 36px 22px 52px; text-align: center; }
 
     .small-title {
       text-transform: uppercase;
@@ -95,7 +92,7 @@
       z-index: 2;
     }
 
-    .subtitle { font-size: 1.08rem; margin-bottom: 26px; }
+    .subtitle { font-size: 1.08rem; margin-bottom: 28px; }
 
     .balloons {
       font-size: 2.2rem;
@@ -105,79 +102,84 @@
       z-index: 2;
     }
 
-    .pacifier-link {
-      width: 132px;
-      height: 98px;
+    .babybum-link {
+      width: 146px;
+      height: 126px;
       text-decoration: none;
-      background: linear-gradient(180deg, #ffd6e8 0%, #cae5ff 100%);
-      border-radius: 48px;
       position: relative;
       cursor: pointer;
-      box-shadow: 0 12px 26px rgba(83,53,92,.18);
-      transition: transform .2s ease;
-      margin: 10px auto 10px;
-      display: inline-flex;
+      margin: 6px auto 12px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 18px;
       font-family: Arial, sans-serif;
-      font-size: .9rem;
+      font-size: .96rem;
       font-weight: 800;
-      color: #5a4760;
+      color: #6a4c63;
       z-index: 3;
+      transition: transform .2s ease;
     }
 
-    .pacifier-link:hover, .pacifier-link:active {
-      transform: translateY(-2px) scale(1.02);
+    .babybum-link:hover, .babybum-link:active {
+      transform: translateY(-2px) scale(1.03);
     }
 
-    .pacifier-link::before {
+    .babybum-shape {
+      position: absolute;
+      inset: 14px 6px 0;
+      border-radius: 44px 44px 50px 50px;
+      background: linear-gradient(180deg, #ffe0ec 0%, #ffffff 82%);
+      box-shadow: 0 10px 22px rgba(83,53,92,.16);
+      border: 4px solid rgba(197,154,81,.28);
+      overflow: hidden;
+    }
+
+    .babybum-shape::before,
+    .babybum-shape::after {
       content: "";
       position: absolute;
-      width: 54px;
-      height: 54px;
+      width: 58px;
+      height: 58px;
+      bottom: 8px;
+      background: linear-gradient(180deg, #ffd2e4 0%, #ffedf5 100%);
       border-radius: 50%;
-      background: rgba(255,255,255,0.78);
-      border: 4px solid rgba(197,154,81,.38);
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
+      border: 2px solid rgba(197,154,81,.18);
     }
 
-    .pacifier-link::after {
-      content: "";
+    .babybum-shape::before { left: 10px; }
+    .babybum-shape::after { right: 10px; }
+
+    .baby-waist {
       position: absolute;
-      width: 50px;
+      top: 10px;
+      left: 16px;
+      right: 16px;
       height: 24px;
-      border: 5px solid rgba(197,154,81,.52);
-      border-top: none;
-      border-radius: 0 0 30px 30px;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.65);
+      border-radius: 18px;
+      background: linear-gradient(90deg, #bfe1ff 0%, #ffe0ef 50%, #bfe1ff 100%);
+      opacity: .95;
+      border: 2px solid rgba(255,255,255,.7);
     }
 
     .tap-text {
       position: relative;
       z-index: 2;
-      margin-top: 8px;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.15;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
     .tiny-note {
       font-family: Arial, sans-serif;
       font-size: .86rem;
       color: #6d5e6e;
-      margin-top: 20px;
+      margin-top: 18px;
       position: relative;
       z-index: 2;
     }
 
-    #invite { scroll-margin-top: 0; }
-
-    .invite-card {
-      padding: 0;
-    }
+    .invite-card { padding: 0; }
 
     .invite-shell {
       position: relative;
@@ -195,11 +197,12 @@
 
     .hero-image-wrap {
       position: absolute;
-      right: -12px;
-      top: 120px;
-      width: min(86%, 720px);
-      opacity: .24;
-      filter: saturate(1.02);
+      left: 50%;
+      transform: translateX(-50%);
+      top: 138px;
+      width: min(92%, 760px);
+      opacity: .36;
+      filter: saturate(1.06);
     }
 
     .hero-image-wrap img {
@@ -209,15 +212,15 @@
 
     .bubble {
       position: absolute;
-      background: rgba(255,255,255,.96);
-      border: 2px solid rgba(217,95,149,.32);
+      background: rgba(255,255,255,.98);
+      border: 2px solid rgba(217,95,149,.34);
       color: #5c465d;
-      border-radius: 20px;
-      padding: 8px 14px;
+      border-radius: 24px;
+      padding: 10px 18px;
       font-family: Arial, sans-serif;
       font-weight: 700;
-      font-size: .95rem;
-      box-shadow: 0 8px 18px rgba(83,53,92,.12);
+      font-size: 1rem;
+      box-shadow: 0 10px 18px rgba(83,53,92,.12);
       white-space: nowrap;
     }
 
@@ -227,16 +230,16 @@
       width: 14px;
       height: 14px;
       background: white;
-      border-right: 2px solid rgba(217,95,149,.32);
-      border-bottom: 2px solid rgba(217,95,149,.32);
+      border-right: 2px solid rgba(217,95,149,.34);
+      border-bottom: 2px solid rgba(217,95,149,.34);
       transform: rotate(45deg);
       bottom: -8px;
     }
 
-    .bubble-left { left: 27%; top: 13%; }
+    .bubble-left { left: 20%; top: 12%; }
     .bubble-left::after { left: 28px; }
-    .bubble-right { right: 18%; top: 14%; }
-    .bubble-right::after { right: 24px; }
+    .bubble-right { right: 20%; top: 11%; }
+    .bubble-right::after { right: 28px; }
 
     .content-layer {
       position: relative;
@@ -245,11 +248,11 @@
     }
 
     .statement {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto 20px;
       padding: 16px 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,.74);
+      background: rgba(255,255,255,.76);
       border: 1px solid rgba(197,154,81,.24);
       font-size: 1.06rem;
       line-height: 1.65;
@@ -280,7 +283,7 @@
     }
 
     .detail-box {
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.82);
       border-radius: 18px;
       padding: 14px 16px;
       border: 1px solid rgba(197,154,81,0.22);
@@ -315,7 +318,7 @@
       max-width: 620px;
       padding: 12px 16px;
       border-radius: 18px;
-      background: rgba(255,248,240,.86);
+      background: rgba(255,248,240,.88);
       border: 1px solid rgba(197,154,81,.22);
       font-size: 1rem;
     }
@@ -324,7 +327,7 @@
       text-align: left;
       max-width: 620px;
       margin: 24px auto 0;
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.9);
       padding: 22px;
       border-radius: 22px;
       border: 1px solid rgba(183,219,255,.75);
@@ -340,9 +343,7 @@
       font-weight: 500;
     }
 
-    .field {
-      margin-bottom: 15px;
-    }
+    .field { margin-bottom: 15px; }
 
     .field label {
       display: block;
@@ -363,15 +364,9 @@
       color: #4a3e4a;
     }
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
+    textarea { min-height: 90px; resize: vertical; }
 
-    .submit-row {
-      text-align: center;
-      margin-top: 6px;
-    }
+    .submit-row { text-align: center; margin-top: 6px; }
 
     .button {
       border: none;
@@ -387,9 +382,7 @@
       font-family: Arial, sans-serif;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
+    .button:hover { transform: translateY(-2px); }
 
     .floating-music {
       position: fixed;
@@ -413,10 +406,7 @@
       line-height: 1.1;
     }
 
-    .floating-music small {
-      font-size: .66rem;
-      font-weight: 700;
-    }
+    .floating-music small { font-size: .66rem; font-weight: 700; }
 
     .footer {
       margin-top: 24px;
@@ -426,80 +416,43 @@
     }
 
     @media (max-width: 768px) {
-      .invite-shell {
-        padding: 30px 16px 34px;
-      }
-
+      .invite-shell { padding: 30px 16px 34px; }
       .hero-image-wrap {
-        width: 125%;
-        right: -26%;
-        top: 190px;
-        opacity: .19;
+        width: min(112%, 760px);
+        top: 176px;
+        opacity: .32;
       }
-
-      .bubble-left {
-        left: 18%;
-        top: 18%;
-      }
-
-      .bubble-right {
-        right: 7%;
-        top: 18%;
-      }
-
-      .statement, .subtitle, .fun-copy {
-        font-size: 1rem;
-      }
+      .bubble-left { left: 12%; top: 14%; }
+      .bubble-right { right: 12%; top: 13%; }
+      .statement, .subtitle, .fun-copy { font-size: 1rem; }
     }
 
     @media (max-width: 520px) {
-      .screen {
-        padding: 14px;
-      }
-
-      .welcome-card {
-        padding: 28px 16px 38px;
-      }
-
-      .invite-shell {
-        padding: 26px 14px 30px;
-      }
-
-      .welcome-card, .invite-card {
-        border-radius: 24px;
-      }
-
+      .screen { padding: 14px; }
+      .welcome-card { padding: 28px 16px 40px; }
+      .invite-shell { padding: 26px 14px 30px; }
+      .welcome-card, .invite-card { border-radius: 24px; }
       .hero-image-wrap {
-        width: 145%;
-        right: -39%;
-        top: 235px;
-        opacity: .16;
+        width: 138%;
+        top: 210px;
+        opacity: .28;
       }
-
       .bubble {
-        font-size: .82rem;
-        padding: 7px 12px;
+        font-size: .88rem;
+        padding: 8px 14px;
       }
-
-      .bubble-left {
-        left: 14%;
-        top: 20%;
-      }
-
-      .bubble-right {
-        right: 6%;
-        top: 21%;
-      }
-
-      form {
-        padding: 18px 14px;
-      }
-
+      .bubble-left { left: 9%; top: 15%; }
+      .bubble-right { right: 8%; top: 14%; }
+      form { padding: 18px 14px; }
       .floating-music {
         width: 58px;
         height: 58px;
         right: 12px;
         bottom: 12px;
+      }
+      .babybum-link {
+        width: 136px;
+        height: 118px;
       }
     }
   </style>
@@ -522,11 +475,13 @@
       <div class="balloons">🎀 🎈 🧸 🎈 💙</div>
       <p class="subtitle">Our little surprise is on the way.. click below please please</p>
 
-      <a class="pacifier-link" href="#invite" onclick="startMusic()">
-        <span class="tap-text">Tap to<br>Open</span>
+      <a class="babybum-link" href="#invite" onclick="startMusic()">
+        <span class="babybum-shape"></span>
+        <span class="baby-waist"></span>
+        <span class="tap-text">Tap to Open</span>
       </a>
 
-      <p class="tiny-note">A tiny tap opens the invite. Music can be played or paused using the floating button.</p>
+      <p class="tiny-note">Tap the little baby bum to open the invitation. Music can be played or paused using the floating button.</p>
     </div>
   </section>
 
@@ -535,7 +490,7 @@
       <div class="invite-hero-bg" aria-hidden="true">
         <div class="hero-image-wrap">
           <img src="assets/couple-thinking-cartoon.png" alt="" />
-          <div class="bubble bubble-left">kutti</div>
+          <div class="bubble bubble-left">kuttu</div>
           <div class="bubble bubble-right">kuttan</div>
         </div>
       </div>

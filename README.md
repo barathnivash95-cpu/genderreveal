@@ -1,13 +1,14 @@
-# Gender Reveal Digital Invitation
+# Gender Reveal Invitation
 
-This is the scroll-fixed version.
+Updated version:
+- baby-bum style cartoon button replaces the pacifier
+- button text now says "Tap to Open"
+- clicking the baby-bum button opens the invitation section
+- couple image centered and more visible
+- thought bubbles made larger and more visible
+- bubble text updated to "kuttu" and "kuttan"
 
-Important change:
-- The pacifier is now a normal clickable link to the invitation section.
-- Tapping it should work even if music autoplay is blocked.
-- The floating music button can play/pause music separately.
-
-Upload all files to GitHub repository root:
+Upload these to your GitHub repo root:
 - index.html
 - README.md
 - .nojekyll
