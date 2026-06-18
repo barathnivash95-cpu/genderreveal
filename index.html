@@ -6,27 +6,28 @@
   <title>Gender Reveal Invitation</title>
   <style>
     :root {
-      --pink: #f8b8cf;
-      --blue: #a9d8ff;
-      --cream: #fff8f0;
-      --gold: #c79a45;
-      --text: #3f2d3d;
-      --white: #ffffff;
+      --pink: #f7b6d6;
+      --pink-deep: #d95f95;
+      --blue: #b7dbff;
+      --blue-deep: #5b94d6;
+      --cream: #fff9f2;
+      --gold: #c59a51;
+      --text: #4b3650;
+      --card: rgba(255,255,255,0.88);
+      --shadow: 0 18px 48px rgba(83, 53, 92, 0.16);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: "Georgia", "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top left, rgba(248,184,207,0.55), transparent 32%),
-        radial-gradient(circle at top right, rgba(169,216,255,0.65), transparent 32%),
-        linear-gradient(180deg, #fffdf8 0%, var(--cream) 100%);
+      font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
-      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(247,182,214,0.6), transparent 28%),
+        radial-gradient(circle at top right, rgba(183,219,255,0.62), transparent 30%),
+        linear-gradient(180deg, #fffefb 0%, var(--cream) 100%);
       overflow-x: hidden;
     }
 
@@ -38,495 +39,665 @@
       padding: 24px;
     }
 
-    .welcome-card,
-    .invite-card {
+    .welcome-card, .invite-card {
       width: 100%;
-      max-width: 760px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(199,154,69,0.35);
+      max-width: 860px;
+      background: var(--card);
+      border: 1px solid rgba(197,154,81,0.32);
       border-radius: 32px;
-      box-shadow: 0 18px 50px rgba(70, 40, 80, 0.16);
-      padding: 34px 24px;
-      text-align: center;
+      box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
     }
 
-    .welcome-card::before,
-    .invite-card::before {
+    .welcome-card::before, .invite-card::before {
       content: "";
       position: absolute;
       inset: 12px;
-      border: 1px dashed rgba(199,154,69,0.45);
+      border: 1px dashed rgba(197,154,81,0.4);
       border-radius: 24px;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .welcome-card {
+      padding: 36px 22px 46px;
+      text-align: center;
     }
 
     .small-title {
       text-transform: uppercase;
       letter-spacing: 3px;
       color: var(--gold);
-      font-size: 0.78rem;
-      margin-bottom: 8px;
+      font-size: .82rem;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      margin: 8px 0 6px;
-      font-size: clamp(2.3rem, 9vw, 4.8rem);
-      line-height: 0.95;
+      margin: 10px 0;
+      font-size: clamp(2.25rem, 8vw, 4.45rem);
+      line-height: .95;
       font-weight: 500;
+      position: relative;
+      z-index: 2;
     }
 
-    h2 {
-      margin: 8px 0 18px;
-      font-size: clamp(1.4rem, 5vw, 2.2rem);
-      font-weight: 400;
+    .pink { color: var(--pink-deep); }
+    .blue { color: var(--blue-deep); }
+
+    .subtitle, .fun-copy, .parking-note {
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.62;
+      position: relative;
+      z-index: 2;
     }
 
-    .subtitle {
-      max-width: 560px;
-      margin: 0 auto 24px;
-      font-size: 1.08rem;
-      line-height: 1.55;
+    .subtitle { font-size: 1.08rem; margin-bottom: 26px; }
+
+    .balloons {
+      font-size: 2.2rem;
+      letter-spacing: 8px;
+      margin: 10px 0 16px;
+      position: relative;
+      z-index: 2;
     }
 
-    .pink {
-      color: #d96a9a;
-    }
-
-    .blue {
-      color: #4e98d2;
-    }
-
-    .button {
-      border: none;
-      border-radius: 999px;
-      padding: 15px 26px;
-      font-size: 1rem;
-      font-weight: 700;
+    .pacifier-link {
+      width: 132px;
+      height: 98px;
+      text-decoration: none;
+      background: linear-gradient(180deg, #ffd6e8 0%, #cae5ff 100%);
+      border-radius: 48px;
+      position: relative;
       cursor: pointer;
-      color: var(--text);
-      background: linear-gradient(90deg, var(--pink), var(--blue));
-      box-shadow: 0 10px 24px rgba(70, 40, 80, 0.18);
-      transition: transform 0.2s ease;
+      box-shadow: 0 12px 26px rgba(83,53,92,.18);
+      transition: transform .2s ease;
+      margin: 10px auto 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      font-family: Arial, sans-serif;
+      font-size: .9rem;
+      font-weight: 800;
+      color: #5a4760;
+      z-index: 3;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
+    .pacifier-link:hover, .pacifier-link:active {
+      transform: translateY(-2px) scale(1.02);
     }
 
-    .hidden {
-      display: none;
+    .pacifier-link::before {
+      content: "";
+      position: absolute;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.78);
+      border: 4px solid rgba(197,154,81,.38);
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .pacifier-link::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 24px;
+      border: 5px solid rgba(197,154,81,.52);
+      border-top: none;
+      border-radius: 0 0 30px 30px;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.65);
+    }
+
+    .tap-text {
+      position: relative;
+      z-index: 2;
+      margin-top: 8px;
+    }
+
+    .tiny-note {
+      font-family: Arial, sans-serif;
+      font-size: .86rem;
+      color: #6d5e6e;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #invite { scroll-margin-top: 0; }
+
+    .invite-card {
+      padding: 0;
+    }
+
+    .invite-shell {
+      position: relative;
+      padding: 34px 22px 38px;
+      min-height: 100vh;
+    }
+
+    .invite-hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-image-wrap {
+      position: absolute;
+      right: -12px;
+      top: 120px;
+      width: min(86%, 720px);
+      opacity: .24;
+      filter: saturate(1.02);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .bubble {
+      position: absolute;
+      background: rgba(255,255,255,.96);
+      border: 2px solid rgba(217,95,149,.32);
+      color: #5c465d;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      box-shadow: 0 8px 18px rgba(83,53,92,.12);
+      white-space: nowrap;
+    }
+
+    .bubble::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-right: 2px solid rgba(217,95,149,.32);
+      border-bottom: 2px solid rgba(217,95,149,.32);
+      transform: rotate(45deg);
+      bottom: -8px;
+    }
+
+    .bubble-left { left: 27%; top: 13%; }
+    .bubble-left::after { left: 28px; }
+    .bubble-right { right: 18%; top: 14%; }
+    .bubble-right::after { right: 24px; }
+
+    .content-layer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .statement {
+      max-width: 680px;
+      margin: 0 auto 20px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(197,154,81,.24);
+      font-size: 1.06rem;
+      line-height: 1.65;
+    }
+
+    .title-stack {
+      margin: 0 auto 8px;
+      max-width: 660px;
+    }
+
+    .title-stack .same-size {
+      display: block;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      line-height: .98;
+    }
+
+    .fun-copy {
+      font-size: 1.08rem;
+      margin: 0 auto 18px;
     }
 
     .details {
       display: grid;
       gap: 12px;
-      margin: 24px auto;
-      max-width: 560px;
+      margin: 24px auto 20px;
+      max-width: 620px;
+      text-align: left;
     }
 
     .detail-box {
-      background: rgba(255, 248, 240, 0.8);
+      background: rgba(255,255,255,.78);
       border-radius: 18px;
       padding: 14px 16px;
-      border: 1px solid rgba(199,154,69,0.22);
-    }
-
-
-    .map-link {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(199,154,69,0.7);
-    }
-
-    .map-link:hover {
-      color: #4e98d2;
+      border: 1px solid rgba(197,154,81,0.22);
+      box-shadow: 0 8px 16px rgba(83,53,92,.06);
     }
 
     .label {
       display: block;
       color: var(--gold);
-      font-size: 0.8rem;
+      font-size: .8rem;
       text-transform: uppercase;
       letter-spacing: 1.6px;
       margin-bottom: 4px;
       font-family: Arial, sans-serif;
+      font-weight: 700;
     }
 
     .value {
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       line-height: 1.45;
       font-weight: 600;
     }
 
-
-    .couple-image-wrap {
-      max-width: 430px;
-      margin: 22px auto 10px;
-      padding: 10px;
-      background: linear-gradient(135deg, rgba(248,184,207,0.55), rgba(169,216,255,0.55));
-      border-radius: 28px;
-      box-shadow: 0 12px 28px rgba(70, 40, 80, 0.14);
+    .map-link {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(197,154,81,.7);
     }
 
-    .couple-image {
-      width: 100%;
-      display: block;
-      border-radius: 22px;
-      border: 1px solid rgba(199,154,69,0.35);
-    }
-
-    .reveal-question {
-      margin: 10px auto 22px;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      color: #5e455d;
-      max-width: 560px;
+    .parking-note {
+      margin: 8px auto 8px;
+      max-width: 620px;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: rgba(255,248,240,.86);
+      border: 1px solid rgba(197,154,81,.22);
+      font-size: 1rem;
     }
 
     form {
       text-align: left;
-      max-width: 560px;
-      margin: 28px auto 0;
-      background: rgba(255,255,255,0.76);
+      max-width: 620px;
+      margin: 24px auto 0;
+      background: rgba(255,255,255,.88);
       padding: 22px;
       border-radius: 22px;
-      border: 1px solid rgba(169,216,255,0.55);
+      border: 1px solid rgba(183,219,255,.75);
+      box-shadow: 0 10px 22px rgba(83,53,92,.08);
+      font-family: Arial, sans-serif;
     }
 
     form h3 {
       text-align: center;
-      margin-top: 0;
-      font-size: 1.5rem;
+      margin: 0 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
       font-weight: 500;
     }
 
     .field {
       margin-bottom: 15px;
-      font-family: Arial, sans-serif;
     }
 
     .field label {
       display: block;
       font-weight: 700;
       margin-bottom: 7px;
-      font-size: 0.95rem;
+      font-size: .95rem;
+      color: #513f55;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 12px 13px;
-      border: 1px solid #d8c6d6;
+      border: 1px solid #dccfdb;
       border-radius: 12px;
       font-size: 1rem;
       font-family: Arial, sans-serif;
       background: white;
+      color: #4a3e4a;
     }
 
     textarea {
-      min-height: 86px;
+      min-height: 90px;
       resize: vertical;
     }
 
-    .note {
-      font-size: 0.84rem;
-      line-height: 1.45;
-      color: #6b5b68;
+    .submit-row {
       text-align: center;
-      margin-top: 12px;
-      font-family: Arial, sans-serif;
+      margin-top: 6px;
     }
 
-    .music-control {
-      margin-top: 18px;
-      font-family: Arial, sans-serif;
-      font-size: 0.9rem;
-    }
-
-    .music-control button {
-      background: transparent;
-      border: 1px solid rgba(199,154,69,0.6);
+    .button {
+      border: none;
       border-radius: 999px;
-      padding: 8px 14px;
+      padding: 14px 24px;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
       color: var(--text);
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      box-shadow: 0 10px 24px rgba(70, 40, 80, 0.14);
+      transition: transform .2s ease;
+      font-family: Arial, sans-serif;
     }
 
-    .balloons {
-      font-size: 2.4rem;
-      margin: 14px 0;
-      letter-spacing: 8px;
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .floating-music {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      width: 62px;
+      height: 62px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(247,182,214,.95), rgba(183,219,255,.95));
+      box-shadow: 0 14px 26px rgba(70,40,80,.22);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #5a4660;
+      font-family: Arial, sans-serif;
+      line-height: 1.1;
+    }
+
+    .floating-music small {
+      font-size: .66rem;
+      font-weight: 700;
     }
 
     .footer {
-      margin-top: 22px;
+      margin-top: 24px;
       font-size: 1.1rem;
       line-height: 1.5;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .invite-shell {
+        padding: 30px 16px 34px;
+      }
+
+      .hero-image-wrap {
+        width: 125%;
+        right: -26%;
+        top: 190px;
+        opacity: .19;
+      }
+
+      .bubble-left {
+        left: 18%;
+        top: 18%;
+      }
+
+      .bubble-right {
+        right: 7%;
+        top: 18%;
+      }
+
+      .statement, .subtitle, .fun-copy {
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 520px) {
-      .welcome-card,
-      .invite-card {
-        padding: 28px 16px;
+      .screen {
+        padding: 14px;
+      }
+
+      .welcome-card {
+        padding: 28px 16px 38px;
+      }
+
+      .invite-shell {
+        padding: 26px 14px 30px;
+      }
+
+      .welcome-card, .invite-card {
         border-radius: 24px;
       }
 
-  
-    .couple-image-wrap {
-      max-width: 430px;
-      margin: 22px auto 10px;
-      padding: 10px;
-      background: linear-gradient(135deg, rgba(248,184,207,0.55), rgba(169,216,255,0.55));
-      border-radius: 28px;
-      box-shadow: 0 12px 28px rgba(70, 40, 80, 0.14);
-    }
+      .hero-image-wrap {
+        width: 145%;
+        right: -39%;
+        top: 235px;
+        opacity: .16;
+      }
 
-    .couple-image {
-      width: 100%;
-      display: block;
-      border-radius: 22px;
-      border: 1px solid rgba(199,154,69,0.35);
-    }
+      .bubble {
+        font-size: .82rem;
+        padding: 7px 12px;
+      }
 
-    .reveal-question {
-      margin: 10px auto 22px;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      color: #5e455d;
-      max-width: 560px;
-    }
+      .bubble-left {
+        left: 14%;
+        top: 20%;
+      }
 
-    form {
+      .bubble-right {
+        right: 6%;
+        top: 21%;
+      }
+
+      form {
         padding: 18px 14px;
+      }
+
+      .floating-music {
+        width: 58px;
+        height: 58px;
+        right: 12px;
+        bottom: 12px;
       }
     }
   </style>
 </head>
+
 <body>
-  <!--
-    MUSIC SETUP:
-    1. Put your music file inside the assets folder.
-    2. Rename it as music.mp3.
-    3. The music will start after the guest taps "Open Invitation".
-  -->
   <audio id="bgMusic" loop>
     <source src="assets/music.mp3" type="audio/mpeg" />
   </audio>
+
+  <button class="floating-music" id="musicBtn" onclick="toggleMusic()" aria-label="Play or pause music">
+    ♫
+    <small id="musicLabel">Play</small>
+  </button>
 
   <section id="welcome" class="screen">
     <div class="welcome-card">
       <div class="small-title">You are invited to our</div>
       <h1><span class="pink">Gender</span><br><span class="blue">Reveal</span></h1>
       <div class="balloons">🎀 🎈 🧸 🎈 💙</div>
-      <p class="subtitle">
-        A little surprise is on the way. Tap below to open our invitation with music.
-      </p>
-      <button class="button" onclick="openInvitation()">Tap to Open Invitation</button>
-      <p class="note">Music starts only after tapping, because most phones block automatic music.</p>
+      <p class="subtitle">Our little surprise is on the way.. click below please please</p>
+
+      <a class="pacifier-link" href="#invite" onclick="startMusic()">
+        <span class="tap-text">Tap to<br>Open</span>
+      </a>
+
+      <p class="tiny-note">A tiny tap opens the invite. Music can be played or paused using the floating button.</p>
     </div>
   </section>
 
-  <section id="invite" class="screen hidden">
-    <div class="invite-card">
-      <div class="small-title">He or She?</div>
-      <h1><span class="pink">Come</span> &amp; <span class="blue">See!</span></h1>
-      <h2>Gender Reveal Celebration</h2>
-
-      <div class="couple-image-wrap">
-        <img class="couple-image" src="assets/couple-thinking-cartoon.png" alt="Soft cartoon portrait of the parents-to-be thinking about the baby gender">
+  <section id="invite" class="screen">
+    <div class="invite-card invite-shell">
+      <div class="invite-hero-bg" aria-hidden="true">
+        <div class="hero-image-wrap">
+          <img src="assets/couple-thinking-cartoon.png" alt="" />
+          <div class="bubble bubble-left">kutti</div>
+          <div class="bubble bubble-right">kuttan</div>
+        </div>
       </div>
 
-      <p class="reveal-question">
-        We are thinking... will it be a little prince or a little princess?
-      </p>
-
-      <p class="subtitle">
-        We are excited to invite you and your family as we reveal the beautiful surprise of our little one.
-        Join us for a joyful moment filled with love, blessings, food, music, and memories.
-      </p>
-
-      <div class="details">
-        <div class="detail-box">
-          <span class="label">Date</span>
-          <div class="value">Sunday, 12 July 2026</div>
+      <div class="content-layer">
+        <div class="statement">
+          Plot twist loading... after all the family guessing, random predictions, and professional auntie-level analysis, it is finally time to find out who has been secretly keeping us curious! Join us for laughs, games, food, and one tiny suspense-filled reveal. Come ready to enjoy, because yes... we are making everyone play games too.
         </div>
-        <div class="detail-box">
-          <span class="label">Time</span>
-          <div class="value">11:00 AM – 2:00 PM</div>
+
+        <div class="small-title">Gender Reveal Celebration</div>
+
+        <div class="title-stack">
+          <h1>
+            <span class="same-size"><span class="pink">He or She?</span></span>
+            <span class="same-size"><span class="blue">Come &amp; See!</span></span>
+          </h1>
         </div>
-        <div class="detail-box">
-          <span class="label">Venue</span>
-          <div class="value">
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Boleyn%20Room%2C%20Springfield%20Parish%20Council%2C%20Chelmsford" target="_blank" rel="noopener noreferrer">
-              Boleyn Room<br>Springfield Parish Council<br>Chelmsford
-            </a>
+
+        <p class="fun-copy">One little baby, two million guesses, and zero calm in this house.</p>
+
+        <div class="details">
+          <div class="detail-box">
+            <span class="label">Date</span>
+            <div class="value">Sunday, 12 July 2026</div>
+          </div>
+
+          <div class="detail-box">
+            <span class="label">Time</span>
+            <div class="value">11:00 AM – 2:00 PM</div>
+          </div>
+
+          <div class="detail-box">
+            <span class="label">Venue</span>
+            <div class="value">
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Boleyn%20Room%2C%20Springfield%20Parish%20Council%2C%20Chelmsford" target="_blank" rel="noopener noreferrer">
+                Boleyn Room<br>Springfield Parish Council<br>Chelmsford
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!--
-        RSVP OPTION CURRENTLY USES EMAIL:
-        When the guest submits, their email app opens with the RSVP details.
-        Later we can connect this to Google Forms / Google Sheets / Formspree for automatic saving.
-      -->
-      <form id="rsvpForm" onsubmit="sendRSVP(event)">
-        <h3>RSVP</h3>
-
-        <div class="field">
-          <label for="familyName">Family / Guest Name</label>
-          <input id="familyName" name="familyName" type="text" placeholder="Example: Kumar family" required />
+        <div class="parking-note">
+          Parking update, with great joy and zero drama: there are lots of parking spaces available, so no hassle in parking and no need for Formula 1 parking skills.
         </div>
 
-        <div class="field">
-          <label for="attendance">Will you attend?</label>
-          <select id="attendance" name="attendance" required>
-            <option value="">Select one</option>
-            <option>Yes, we will attend</option>
-            <option>Sorry, we cannot attend</option>
-            <option>Not sure yet</option>
-          </select>
+        <form id="rsvpForm" onsubmit="sendRSVP(event)">
+          <h3>RSVP</h3>
+
+          <div class="field">
+            <label for="familyName">Family / Guest Name</label>
+            <input id="familyName" name="familyName" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="attendance">We eagerly await your presence</label>
+            <select id="attendance" name="attendance" required>
+              <option value="" selected disabled hidden></option>
+              <option>Yes, we will attend</option>
+              <option>Sorry, we cannot attend</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="food">Preference</label>
+            <select id="food" name="food" required>
+              <option value="" selected disabled hidden></option>
+              <option>Vegetarian</option>
+              <option>Non-Vegetarian</option>
+              <option>Both / Mixed family preference</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="count">Number of persons attending</label>
+            <input id="count" name="count" type="number" min="0" max="20" required />
+          </div>
+
+          <div class="field">
+            <label for="children">Any children attending?</label>
+            <select id="children" name="children">
+              <option value="" selected disabled hidden></option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="allergies">Any allergies please let us know</label>
+            <textarea id="allergies" name="allergies"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="message">Message for the parents-to-be</label>
+            <textarea id="message" name="message" placeholder="Optional"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button class="button" type="submit">Submit RSVP</button>
+          </div>
+        </form>
+
+        <div class="footer">
+          With love,<br>
+          <strong>Barath &amp; Family</strong>
         </div>
-
-        <div class="field">
-          <label for="food">Food Preference</label>
-          <select id="food" name="food" required>
-            <option value="">Select one</option>
-            <option>Vegetarian</option>
-            <option>Non-Vegetarian</option>
-            <option>Both / Mixed family preference</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="count">Number of persons attending</label>
-          <input id="count" name="count" type="number" min="0" max="20" placeholder="Example: 4" required />
-        </div>
-
-        <div class="field">
-          <label for="children">Any children attending?</label>
-          <select id="children" name="children">
-            <option value="">Select one</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="message">Message for the parents-to-be</label>
-          <textarea id="message" name="message" placeholder="Optional"></textarea>
-        </div>
-
-        <button class="button" type="submit">Submit RSVP</button>
-        <p class="note">
-          Current template sends RSVP by email. Later we can connect this to Google Sheets for automatic tracking.
-        </p>
-      </form>
-
-      <div class="music-control">
-        <button onclick="toggleMusic()">Pause / Play Music</button>
-      </div>
-
-      <div class="footer">
-        With love,<br>
-        <strong>Barath &amp; Family</strong>
       </div>
     </div>
   </section>
+
   <script>
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const musicLabel = document.getElementById('musicLabel');
-    const invite = document.getElementById('invite');
-    const openInviteBtn = document.getElementById('openInviteBtn');
+    const music = document.getElementById("bgMusic");
+    const musicLabel = document.getElementById("musicLabel");
 
-    function openInvitation() {
-      const welcome = document.getElementById('welcome');
-
-      // Show the invitation first. Music is attempted afterwards.
-      welcome.classList.add('hidden');
-      invite.classList.remove('hidden');
-      invite.classList.add('opening');
-      musicBtn.classList.remove('hidden');
-
+    function startMusic() {
       try {
         music.volume = 0.45;
-        const playPromise = music.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => { musicLabel.textContent = 'Pause'; })
-            .catch(() => { musicLabel.textContent = 'Play'; });
-        }
-      } catch (error) {
-        musicLabel.textContent = 'Play';
+        music.play()
+          .then(() => musicLabel.textContent = "Pause")
+          .catch(() => musicLabel.textContent = "Play");
+      } catch (e) {
+        musicLabel.textContent = "Play";
       }
-
-      setTimeout(() => invite.classList.remove('opening'), 1300);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (openInviteBtn) {
-      openInviteBtn.addEventListener('click', openInvitation);
-      openInviteBtn.addEventListener('touchend', function(event) {
-        event.preventDefault();
-        openInvitation();
-      });
     }
 
     function toggleMusic() {
       if (music.paused) {
-        music.play()
-          .then(() => musicLabel.textContent = 'Pause')
-          .catch(() => musicLabel.textContent = 'Play');
+        startMusic();
       } else {
         music.pause();
-        musicLabel.textContent = 'Play';
+        musicLabel.textContent = "Play";
       }
     }
 
     function sendRSVP(event) {
       event.preventDefault();
 
-      const familyName = document.getElementById('familyName').value;
-      const attendance = document.getElementById('attendance').value;
-      const food = document.getElementById('food').value;
-      const count = document.getElementById('count').value;
-      const children = document.getElementById('children').value;
-      const allergies = document.getElementById('allergies').value;
-      const message = document.getElementById('message').value;
+      const familyName = document.getElementById("familyName").value;
+      const attendance = document.getElementById("attendance").value;
+      const food = document.getElementById("food").value;
+      const count = document.getElementById("count").value;
+      const children = document.getElementById("children").value;
+      const allergies = document.getElementById("allergies").value;
+      const message = document.getElementById("message").value;
 
-      const subject = encodeURIComponent('Gender Reveal RSVP - ' + familyName);
+      const subject = encodeURIComponent("Gender Reveal RSVP - " + familyName);
       const body = encodeURIComponent(
-        'Gender Reveal RSVP
-
-' +
-        'Family / Guest Name: ' + familyName + '
-' +
-        'We eagerly await your presence: ' + attendance + '
-' +
-        'Preference: ' + food + '
-' +
-        'Number of persons attending: ' + count + '
-' +
-        'Children attending: ' + children + '
-' +
-        'Allergies: ' + allergies + '
-' +
-        'Message: ' + message + '
-
-' +
-        'Event: Gender Reveal Celebration
-' +
-        'Date: Sunday, 12 July 2026
-' +
-        'Time: 11:00 AM - 2:00 PM
-' +
-        'Venue: Boleyn Room, Springfield Parish Council, Chelmsford'
+        "Gender Reveal RSVP\n\n" +
+        "Family / Guest Name: " + familyName + "\n" +
+        "We eagerly await your presence: " + attendance + "\n" +
+        "Preference: " + food + "\n" +
+        "Number of persons attending: " + count + "\n" +
+        "Children attending: " + children + "\n" +
+        "Allergies: " + allergies + "\n" +
+        "Message: " + message + "\n\n" +
+        "Event: Gender Reveal Celebration\n" +
+        "Date: Sunday, 12 July 2026\n" +
+        "Time: 11:00 AM - 2:00 PM\n" +
+        "Venue: Boleyn Room, Springfield Parish Council, Chelmsford"
       );
 
-      window.location.href = 'mailto:barathnivash95@gmail.com?subject=' + subject + '&body=' + body;
+      window.location.href = "mailto:barathnivash95@gmail.com?subject=" + subject + "&body=" + body;
     }
   </script>
 </body>
