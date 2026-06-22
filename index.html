@@ -448,7 +448,7 @@
 
       <div class="content-layer">
         <div class="statement">
-          Plot twist loading... after all the family guessing, random predictions, and professional auntie-level analysis, it is finally time to find out who has been secretly keeping us curious! Join us for laughs, games, food, and one tiny suspense-filled reveal. Come ready to enjoy, because yes... we are making everyone play games too.
+          A tiny surprise is ready to make a big entry! Come join us for laughs, games, food, and the big reveal — because even we are tired of guessing now.
         </div>
 
         <div class="small-title">Gender Reveal Celebration</div>
@@ -485,7 +485,7 @@
         </div>
 
         <div class="parking-note">
-          Parking update, with great joy and zero drama: there are lots of parking spaces available, so no hassle in parking and no need for Formula 1 parking skills.
+          Parking available at the event hall.
         </div>
 
         <form id="rsvpForm" onsubmit="sendRSVP(event)">
@@ -552,29 +552,16 @@
     const music = document.getElementById("bgMusic");
     const musicLabel = document.getElementById("musicLabel");
 
-    /*
-      GOOGLE FORM SETUP
-      Replace these placeholder values with your real Google Form details.
-
-      Create a Google Form with these questions:
-      1. Family / Guest Name
-      2. Attendance
-      3. Number of persons attending
-      4. Vegetarian count
-      5. Non vegetarian count
-      6. Any allergies
-      7. Message for the parents-to-be
-    */
-    const GOOGLE_FORM_ACTION_URL = "PASTE_YOUR_GOOGLE_FORM_FORMRESPONSE_URL_HERE";
+    const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdZTY0rJIlz7nPAf2pHAbcJNnT05JV7Y8Oa0qnABLXpYsjldQ/formResponse";
 
     const GOOGLE_FORM_ENTRIES = {
-      familyName: "entry.PASTE_FAMILY_NAME_ID",
-      attendance: "entry.PASTE_ATTENDANCE_ID",
-      personCount: "entry.PASTE_PERSON_COUNT_ID",
-      vegCount: "entry.PASTE_VEG_COUNT_ID",
-      nonVegCount: "entry.PASTE_NON_VEG_COUNT_ID",
-      allergies: "entry.PASTE_ALLERGIES_ID",
-      message: "entry.PASTE_MESSAGE_ID"
+      attendance: "entry.679553306",
+      personCount: "entry.695882065",
+      vegCount: "entry.985480686",
+      nonVegCount: "entry.1225710060",
+      allergies: "entry.1157302185",
+      message: "entry.610660446",
+      familyName: "entry.1397653953"
     };
 
     function startMusic() {
@@ -723,11 +710,6 @@
       body += "Time: 11:00 AM - 2:00 PM\n";
       body += "Venue: Boleyn Room, Springfield Parish Council, Chelmsford";
 
-      if (!GOOGLE_FORM_ACTION_URL || GOOGLE_FORM_ACTION_URL.includes("PASTE_YOUR_GOOGLE_FORM")) {
-        alert("Google Form is not connected yet. Please add the Google Form action URL and entry IDs in index.html.");
-        return;
-      }
-
       const formData = new FormData();
       formData.append(GOOGLE_FORM_ENTRIES.familyName, familyName);
       formData.append(GOOGLE_FORM_ENTRIES.attendance, attendance === "attending" ? "Attending" : "Not attending");
@@ -741,14 +723,14 @@
         formData.append(GOOGLE_FORM_ENTRIES.vegCount, veg);
         formData.append(GOOGLE_FORM_ENTRIES.nonVegCount, nonVeg);
         formData.append(GOOGLE_FORM_ENTRIES.allergies, allergies);
+        formData.append(GOOGLE_FORM_ENTRIES.message, "");
       } else {
         formData.append(GOOGLE_FORM_ENTRIES.personCount, "");
         formData.append(GOOGLE_FORM_ENTRIES.vegCount, "");
         formData.append(GOOGLE_FORM_ENTRIES.nonVegCount, "");
         formData.append(GOOGLE_FORM_ENTRIES.allergies, "");
+        formData.append(GOOGLE_FORM_ENTRIES.message, message);
       }
-
-      formData.append(GOOGLE_FORM_ENTRIES.message, message);
 
       fetch(GOOGLE_FORM_ACTION_URL, {
         method: "POST",
