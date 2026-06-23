@@ -88,3 +88,16 @@ In Google Forms, make sure Attendance option text is exactly:
 - The event time is now clickable.
 - Guests can tap the time to add the event to their calendar.
 - Calendar file includes reminders 1 day before and 1 hour before.
+
+
+## Google Calendar direct link update
+
+- The time link no longer downloads an ICS file.
+- It now opens Google Calendar event creation page directly.
+- The event details include a reminder note: set reminder 1 day before the event.
+
+Note: Google Calendar's public URL can pre-fill event details, date, time, and location, but the user's own Calendar settings control whether reminders are auto-added. The event details remind the guest to set a 1-day reminder.
+
+
+## Calendar note update
+- Time bar note changed to: Tap the time to set reminder
