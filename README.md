@@ -101,3 +101,10 @@ Note: Google Calendar's public URL can pre-fill event details, date, time, and l
 
 ## Calendar note update
 - Time bar note changed to: Tap the time to set reminder
+
+
+## No-download calendar fix
+
+- Removed the `.ics` file.
+- The time link now opens Google Calendar directly in a new tab.
+- Note shown: Tap the time to set reminder.
