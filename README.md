@@ -29,3 +29,10 @@ Upload these extracted files to your GitHub repository root:
 
 - invitation paragraph shortened and made more welcoming/funny
 - parking paragraph replaced with: Parking available at the event hall.
+
+
+## Title position update
+
+- Moved "He or She? Come & See!" upward to the blank top area.
+- Shifted the background couple image downward so the title does not hide the face.
+- Kept the Google Form connection and latest wording.

@@ -180,6 +180,7 @@
       filter: saturate(1.06);
       display: flex;
       justify-content: center;
+      transform: translateY(85px);
     }
     .hero-image-wrap img {
       width: 100%;
@@ -207,11 +208,13 @@
 
     .headline-row {
       max-width: 760px;
-      margin: 0 auto 8px;
+      margin: -18px auto 30px;
       display: grid;
       grid-template-columns: 110px minmax(0,1fr) 110px;
-      align-items: center;
+      align-items: start;
       gap: 12px;
+      position: relative;
+      z-index: 3;
     }
 
     .title-stack { margin: 0; }
@@ -400,8 +403,19 @@
       .welcome-card { padding: 28px 16px 38px; }
       .invite-shell { padding: 26px 14px 30px; }
       .welcome-card, .invite-card { border-radius: 24px; }
-      .hero-image-wrap { width: min(100%, 520px); top: 205px; opacity: .40; }
-      .headline-row { grid-template-columns: 82px minmax(0,1fr) 82px; gap: 6px; margin-bottom: 10px; }
+      .hero-image-wrap {
+        width: min(100%, 520px);
+        top: 205px;
+        opacity: .40;
+        transform: translateY(130px);
+      }
+
+      .headline-row {
+        grid-template-columns: 82px minmax(0,1fr) 82px;
+        gap: 6px;
+        margin: -8px auto 24px;
+        align-items: start;
+      }
       .cloud {
         min-width: 78px;
         min-height: 48px;
@@ -433,7 +447,7 @@
       <a class="babybum-link" href="#invite" onclick="startMusic()">
         <span class="babybum-shape"></span>
         <span class="baby-waist"></span>
-        <span class="tap-text">Tap to Scroll</span>
+        <span class="tap-text">Tap to Open</span>
       </a>
     </div>
   </section>
@@ -472,7 +486,7 @@
           </div>
           <div class="detail-box">
             <span class="label">Time</span>
-            <div class="value">10:30 AM – 1:30 PM</div>
+            <div class="value">11:00 AM – 2:00 PM</div>
           </div>
           <div class="detail-box">
             <span class="label">Venue</span>
